@@ -1,0 +1,24 @@
+//The order is so important 
+
+//Base
+@import '../style/base/colors.scss';
+@import '../style/base/fonts.scss';
+@import '../style/base/mixins.scss';
+
+
+// Libraries
+// '~' means mode_modules..
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~primeicons/primeicons.css';
+@import '~primeng/resources/themes/lara-light-blue/theme.css';
+@import '~primeng/resources/primeng.min.css';
+@import '~primeflex/primeflex.css';
+
+@import '../style/base/configuration.scss';
+
+//Pages
+@import './apps/shop/pages/home-page.scss';
+@import './apps/shop/pages/product-list.scss';
+
+//Libs
+@import '../style/libs/ui/ui.scss';
