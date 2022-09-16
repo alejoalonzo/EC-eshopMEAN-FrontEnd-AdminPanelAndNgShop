@@ -1,3 +1,5 @@
+@import '~normalize.css/normalize.css';
+
 //The order is so important 
 
 //Base
@@ -19,6 +21,10 @@
 //Pages
 @import './apps/shop/pages/home-page.scss';
 @import './apps/shop/pages/product-list.scss';
+
+//Shared
+@import './apps/shop/shared/footer.scss';
+@import './apps/shop/shared/header.scss';
 
 //Libs
 @import '../style/libs/ui/ui.scss';

@@ -1,0 +1,69 @@
+.admin{
+    &-wrapper{
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    &-main{
+        width: calc(100% - 200px);
+        margin-left: 200px;
+    }
+
+    &-sidebar{
+        position: fixed;
+        width: 200px;
+        background-color: $darkBG;
+        height: 100%;
+        top: 0;
+
+        .logo{
+            padding: 5px;
+            width: 100%;
+            img {
+                max-width: 100%;
+            }
+        }
+        .links{
+            ul{
+                margin: 0;
+                padding: 0;
+                
+                li{
+                    display: block;
+                    width: 100%;
+                    list-style: none;
+                    a{
+                        color: var(--surface-a);
+                        padding: 10px 15px;
+                        display: block;
+                        width: 100%;
+
+                        &:hover{
+                            background: var(--bs-info);
+                            color: $textDarkBGhove;
+                            @include transition(.3s)
+                        }
+                        i{
+                            margin-right: 10px;
+                            margin-top: 0;
+                            float: left;
+                        }
+
+                    }
+                    .logout{
+                        color: var(--bs-info);
+                        &:hover{
+                            background: $textDarkBGhove;
+                            color: $darkBG;
+                            @include transition(.3s)
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+
+}
