@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
 import { Category } from '../models/category';
 import { Global } from '../../../../global/global';
-
-
-
+import { environment } from '@env/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +11,30 @@ import { Global } from '../../../../global/global';
 
 export class CategoriesService {
 
+  apiURLcategories = environment.apiURL+'categories';
   public url!: string;
   constructor(private http:HttpClient) { 
     
   }
 
   getCategories(): Observable<Category[]>{
-    
+    return this.http.get<Category[]>(this.apiURLcategories);
+  }
+  getCategory(categoryId: string): Observable<Category>{
+    return this.http.get<Category>(`${this.apiURLcategories}/${categoryId}`);
+  }
+  createCategories(category: Category): Observable<Category>{
     this.url = Global.url;
-    return this.http.get<Category[]>(this.url+'/v1/categories');
-    //http://127.0.0.1:3000/api/v1/categories
+    return this.http.post<Category>(this.apiURLcategories, category);
+  }
+  updateCategories(category: Category): Observable<Category>{
+    this.url = Global.url;
+    return this.http.put<Category>(`${this.apiURLcategories}/${category['id']}`, category);
+  }
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  deleteCategories(categoryId: string): Observable<unknown>{
+    this.url = Global.url;
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    return this.http.delete<unknown>(`${this.apiURLcategories}/${categoryId}`);
   }
 }

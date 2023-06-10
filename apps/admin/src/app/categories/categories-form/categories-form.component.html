@@ -1,13 +1,15 @@
+<p-toast></p-toast>
 <div class="admin-page">
-    <p-card header="Add categories" subheader="You can add or edit categories here.">
-        <div class="grid">
+    <p-card [header]="editMode ? 'Edit Category' : 'Add category'" subheader="You can add or edit categories here.">
+        <div class="grid mb-4">
             <div class="col-12 md:col-6 lg:col-3">
                 <p-toolbar>
                     <div class="p-toolbar-group-left"></div>
                     <div class="p-toolbar-group-right">
-                        <p-button label="Add" icon="pi pi-plus" routerLink="form" styleClass="mr-2">
+                        <p-button [label]="editMode ? 'Update' : 'Create'" icon="pi pi-plus" styleClass="mr-2"
+                            (click)="onSubmit()">
                         </p-button>
-                        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-danger" routerLink="form">
+                        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-danger" (click)="goBack()">
                         </p-button>
                     </div>
                 </p-toolbar>
@@ -15,6 +17,28 @@
         </div>
         <div class="grid">
             <div class="col-12 md:col-6 lg:col-3">
+                <form [formGroup]="form">
+                    <div class="formgrid grid">
+                        <div class="field col">
+                            <label for="name">Name</label>
+                            <input formControlName="name" id="name" type="text"
+                                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                            <small *ngIf="form.controls['name'].invalid && isSubmitted" class="p-error">Name is
+                                required</small>
+                        </div>
+                        <div class="field col">
+                            <label for="icon">Icon</label>
+                            <input formControlName="icon" id="icon" type="text"
+                                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                            <small *ngIf="form.controls['icon'].invalid && isSubmitted" class="p-error">Name is
+                                required</small>
+                        </div>
+                        <div class="field col">
+                            <label for="p-colorPicker">Color</label><br>
+                            <p-colorPicker formControlName="color"></p-colorPicker>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </p-card>
