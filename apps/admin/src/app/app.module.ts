@@ -10,7 +10,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { CategoriesListComponent } from './categories/categories-list/categories-list.component';
+import { CategoriesListComponent } from './pages/categories/categories-list/categories-list.component';
+import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
 
 import { CardModule } from 'primeng/card';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -18,12 +20,18 @@ import { ButtonModule } from 'primeng/button';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { TableModule } from 'primeng/table';
 import { CategoriesService } from '@bluebits/products';
-import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
+import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DropdownModule } from 'primeng/dropdown';
+import { EditorModule } from 'primeng/editor';
+import { FileUploadModule } from 'primeng/fileupload';
 
 const UX_MODULE = [
   CardModule,
@@ -34,47 +42,75 @@ const UX_MODULE = [
   InputTextModule,
   ToastModule,
   ConfirmDialogModule,
-  ColorPickerModule
-]
-
+  ColorPickerModule,
+  InputNumberModule,
+  InputSwitchModule,
+  InputTextareaModule,
+  DropdownModule,
+  EditorModule,
+  FileUploadModule
+];
 
 const routes: Routes = [
-  { path: '', component: ShellComponent, children:[
-    {
-      path: 'dashboard', component: DashboardComponent
-    },
-    {
-      path: 'categories', component: CategoriesListComponent
-    },
-    {
-      path: 'categories/form', component: CategoriesFormComponent
-    }
-    ,
-    {
-      path: 'categories/form/:id', component: CategoriesFormComponent
-    }
-  ] }
+  {
+    path: '',
+    component: ShellComponent,
+    children: [
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+      },
+      //categories-------------------------------
+      {
+        path: 'categories',
+        component: CategoriesListComponent,
+      },
+      {
+        path: 'categories/form',
+        component: CategoriesFormComponent,
+      },
+      {
+        path: 'categories/form/:id',
+        component: CategoriesFormComponent,
+      },
+      //products-------------------------------
+      {
+        path: 'products',
+        component: ProductsListComponent,
+      },
+      {
+        path: 'products/form',
+        component: ProductsFormComponent,
+      },
+      {
+        path: 'products/form/:id',
+        component: ProductsFormComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    DashboardComponent, 
-    ShellComponent, 
-    SidebarComponent, 
-    CategoriesListComponent, 
-    CategoriesFormComponent
+    AppComponent,
+    DashboardComponent,
+    ShellComponent,
+    SidebarComponent,
+    CategoriesListComponent,
+    CategoriesFormComponent,
+    ProductsFormComponent,
+    ProductsListComponent,
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule, 
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
-    ...UX_MODULE
+    ...UX_MODULE,
   ],
-  providers: [CategoriesService, MessageService, ConfirmationService ],
+  providers: [CategoriesService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

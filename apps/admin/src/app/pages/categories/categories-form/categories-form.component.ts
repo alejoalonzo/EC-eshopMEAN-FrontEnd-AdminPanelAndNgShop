@@ -8,7 +8,7 @@ import { timer } from 'rxjs';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'bluebits-categories-form',
+  selector: 'admin-categories-form',
   templateUrl: './categories-form.component.html',
   styles: [
   ]
