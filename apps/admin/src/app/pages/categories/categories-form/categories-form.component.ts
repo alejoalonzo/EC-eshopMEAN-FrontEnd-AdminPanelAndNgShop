@@ -20,6 +20,7 @@ export class CategoriesFormComponent implements OnInit {
   editMode!: boolean;
   boolean=false
   currentCategoryId!: string;
+  
 
   constructor(private formBuilder: FormBuilder, 
     private messageService: MessageService, 
@@ -51,9 +52,8 @@ export class CategoriesFormComponent implements OnInit {
     }else{
       this._addCategory(category);
     }
-
-
   }
+  
   goBack(){
     this.locations.back();
   }

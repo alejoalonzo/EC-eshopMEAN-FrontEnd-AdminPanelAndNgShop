@@ -53,7 +53,8 @@
                         <div class="field col">
                             <label for="category">Category</label><br>
                             <p-dropdown formControlName="category" [options]="categories" optionLabel="name"
-                                optionValue="_id" [filter]="true" class="p-dropdown-grid"></p-dropdown>
+                                optionValue="_id" [filter]="true" class="p-dropdown-grid">
+                            </p-dropdown>
                             <small *ngIf="form.controls['category'].invalid && isSubmitted" class="p-error">Category is
                                 required</small>
                         </div>

@@ -85,8 +85,9 @@ export class ProductsFormComponent implements OnInit {
 
       Object.keys(this.productForm).map((key)=>{
         productFormData.append(key, this.productForm[key].value);
+        console.log(key);
       })
-
+      
       if(this.editMode){
         this._updateProduct(productFormData);
       }else{

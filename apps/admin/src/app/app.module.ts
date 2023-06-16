@@ -13,6 +13,9 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { CategoriesListComponent } from './pages/categories/categories-list/categories-list.component';
 import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
 import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { UsersListComponent } from './pages/users/users-list/users-list.component';
+import { UsersFormComponent } from './pages/users/users-form/users-form.component';
+
 
 import { CardModule } from 'primeng/card';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -32,6 +35,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
 import { EditorModule } from 'primeng/editor';
 import { FileUploadModule } from 'primeng/fileupload';
+import { TagModule } from 'primeng/tag';
+import { InputMaskModule } from 'primeng/inputmask';
 
 const UX_MODULE = [
   CardModule,
@@ -48,7 +53,9 @@ const UX_MODULE = [
   InputTextareaModule,
   DropdownModule,
   EditorModule,
-  FileUploadModule
+  FileUploadModule,
+  TagModule,
+  InputMaskModule
 ];
 
 const routes: Routes = [
@@ -86,6 +93,19 @@ const routes: Routes = [
         path: 'products/form/:id',
         component: ProductsFormComponent,
       },
+      //users-------------------------------
+      {
+        path: 'users',
+        component: UsersListComponent,
+      },
+      {
+        path: 'users/form',
+        component: UsersFormComponent,
+      },
+      {
+        path: 'users/form/:id',
+        component: UsersFormComponent,
+      },
     ],
   },
 ];
@@ -100,6 +120,8 @@ const routes: Routes = [
     CategoriesFormComponent,
     ProductsFormComponent,
     ProductsListComponent,
+    UsersListComponent,
+    UsersFormComponent
   ],
   imports: [
     BrowserModule,
