@@ -2,8 +2,9 @@ export class User{
     id?: string;
     name?: string;
     email?: string;
-    passwordHash?: string;
+    password?: string;
     phone?: string;
+    token?: string;
     isAdmin?: boolean;
     street?: string;
     number?: string;

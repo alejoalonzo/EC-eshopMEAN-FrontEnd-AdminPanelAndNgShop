@@ -46,7 +46,7 @@ export class UsersFormComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       name:['', Validators.required],
       email:['', [Validators.required, Validators.email]],
-      passwordHash:['', Validators.required],
+      password:['', Validators.required],
       isAdmin:[false],
       phone:['', Validators.required],
       street:[''],
@@ -74,7 +74,7 @@ export class UsersFormComponent implements OnInit {
       name: this.userForm.controls['name'].value,
       email: this.userForm.controls['email'].value,
       isAdmin: this.userForm.controls['isAdmin'].value,
-      passwordHash: this.userForm.controls['passwordHash'].value,
+      password: this.userForm.controls['password'].value,
       phone: this.userForm.controls['phone'].value,
       street: this.userForm.controls['street'].value,
       number: this.userForm.controls['number'].value,
@@ -147,8 +147,8 @@ export class UsersFormComponent implements OnInit {
           this.userForm.controls['city'].setValue(user['city']);
           this.userForm.controls['country'].setValue(user['country'] ? user['country'] : null); 
 
-          this.userFormu['passwordHash'].setValidators([]);
-          this.userFormu['passwordHash'].updateValueAndValidity();
+          this.userFormu['password'].setValidators([]);
+          this.userFormu['password'].updateValueAndValidity();
         })
       }
     })

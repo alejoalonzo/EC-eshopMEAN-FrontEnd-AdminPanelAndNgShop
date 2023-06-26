@@ -36,11 +36,10 @@
                             </small>
                         </div>
                         <div class="field col">
-                            <label for="passwordHash">Password</label>
-                            <input formControlName="passwordHash" id="passwordHash" type="text"
+                            <label for="password">Password</label>
+                            <input formControlName="password" id="password" type="text"
                                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                            <small *ngIf="userForm.controls['passwordHash'].invalid && isSubmitted"
-                                class="p-error">Password
+                            <small *ngIf="userForm.controls['password'].invalid && isSubmitted" class="p-error">Password
                                 is
                                 required</small>
                         </div>

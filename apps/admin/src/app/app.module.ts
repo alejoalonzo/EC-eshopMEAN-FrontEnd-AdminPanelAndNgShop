@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import { AuthGardService, JwtInterceptor, UsersModule } from '@bluebits/users';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -40,7 +42,6 @@ import { TagModule } from 'primeng/tag';
 import { InputMaskModule } from 'primeng/inputmask';
 import { FieldsetModule } from 'primeng/fieldset';
 
-
 const UX_MODULE = [
   CardModule,
   ToolbarModule,
@@ -66,6 +67,8 @@ const routes: Routes = [
   {
     path: '',
     component: ShellComponent,
+    //this gard blocks the following urls so that no one can see them, they are unlocked with the login
+    canActivate:[AuthGardService],
     children: [
       {
         path: 'dashboard',
@@ -146,9 +149,13 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
+    UsersModule,
     ...UX_MODULE,
   ],
-  providers: [CategoriesService, MessageService, ConfirmationService],
+  providers: [
+    CategoriesService, MessageService, ConfirmationService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true }//Token to authorize (Bearer)
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
