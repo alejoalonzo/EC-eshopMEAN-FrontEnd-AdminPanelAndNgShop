@@ -1,0 +1,56 @@
+.d-item{
+    display:flex;
+    text-align: center;
+    color: #f6f6f6;
+    justify-content: space-between;
+    align-items: center;
+    .pi{
+        font-size: 3em;
+    }
+    .title{
+        font-size: 2em;
+        margin-left: 3px;
+    }
+    .number{
+        font-size: 4em;
+    }
+}
+
+.d-orders{
+    background-color: #FFE53B;
+    background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+}
+.d-products{
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+}
+.d-users{
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    
+    
+    
+}
+.d-totalSales{
+    background-color: #FF9A8B;
+    background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+    
+}
+
+
+
+ /*laptop */
+@media (max-width: 1536px) {
+    .d-item{
+        display:flex;
+        .pi{
+            font-size: 1.9em;
+        }
+        .title{
+            font-size: 1.4em;
+        }
+        .number{
+            font-size: 3.5em;
+        }
+    }
+  }

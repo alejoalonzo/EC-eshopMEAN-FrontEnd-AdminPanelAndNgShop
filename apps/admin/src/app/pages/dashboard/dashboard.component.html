@@ -1,1 +1,46 @@
-<p>dashboard works!</p>
+<div class="admin-page" *ngIf="products">
+    <p-card header="Dashboard" subheader="Latest Updates">
+        <div class="grid">
+            <div class="col-3">
+                <p-card styleClass="d-orders">
+                    <div class="d-item">
+                        <div> <i class="pi pi-shopping-cart"></i>
+                            <span class="title">Orders|</span>
+                        </div>
+                        <span class="number">{{ orders.length }}</span>
+                    </div>
+                </p-card>
+            </div>
+            <div class="col-3">
+                <p-card styleClass="d-products">
+                    <div class="d-item">
+                        <div> <i class="pi pi-briefcase"></i>
+                            <span class="title">Products|</span>
+                        </div>
+                        <span class="number">{{ products.length }}</span>
+                    </div>
+                </p-card>
+            </div>
+            <div class="col-3">
+                <p-card styleClass="d-users">
+                    <div class="d-item">
+                        <div> <i class="pi pi-users"></i>
+                            <span class="title">Users|</span>
+                        </div>
+                        <span class="number">{{ users.length }}</span>
+                    </div>
+                </p-card>
+            </div>
+            <div class="col-3">
+                <p-card styleClass="d-totalSales">
+                    <div class="d-item">
+                        <div> <i class="pi pi-bolt"></i>
+                            <span class="title">Total Sales|</span>
+                        </div>
+                        <span class="number">{{ totalSales?.totalsales }}</span>
+                    </div>
+                </p-card>
+            </div>
+        </div>
+    </p-card>
+</div>

@@ -4,11 +4,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { AuthGardService, JwtInterceptor, UsersModule } from '@bluebits/users';
+import { JwtInterceptor, UsersModule } from '@bluebits/users';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -41,6 +40,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { TagModule } from 'primeng/tag';
 import { InputMaskModule } from 'primeng/inputmask';
 import { FieldsetModule } from 'primeng/fieldset';
+import { AppRoutingModuleModule } from './app-routes.modules';
 
 const UX_MODULE = [
   CardModule,
@@ -63,69 +63,6 @@ const UX_MODULE = [
   FieldsetModule
 ];
 
-const routes: Routes = [
-  {
-    path: '',
-    component: ShellComponent,
-    //this gard blocks the following urls so that no one can see them, they are unlocked with the login
-    canActivate:[AuthGardService],
-    children: [
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-      },
-      //categories-------------------------------
-      {
-        path: 'categories',
-        component: CategoriesListComponent,
-      },
-      {
-        path: 'categories/form',
-        component: CategoriesFormComponent,
-      },
-      {
-        path: 'categories/form/:id',
-        component: CategoriesFormComponent,
-      },
-      //products-------------------------------
-      {
-        path: 'products',
-        component: ProductsListComponent,
-      },
-      {
-        path: 'products/form',
-        component: ProductsFormComponent,
-      },
-      {
-        path: 'products/form/:id',
-        component: ProductsFormComponent,
-      },
-      //users-------------------------------
-      {
-        path: 'users',
-        component: UsersListComponent,
-      },
-      {
-        path: 'users/form',
-        component: UsersFormComponent,
-      },
-      {
-        path: 'users/form/:id',
-        component: UsersFormComponent,
-      },
-
-      //orders-------------------------------
-      {
-        path: 'orders',
-        component: OrdersListComponent,
-      },
-      {
-        path: 'orders/:id',
-        component: OrdersDetailComponent,
-      },
-    ],
-  },
-];
 
 @NgModule({
   declarations: [
@@ -148,7 +85,7 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
+    AppRoutingModuleModule,
     UsersModule,
     ...UX_MODULE,
   ],

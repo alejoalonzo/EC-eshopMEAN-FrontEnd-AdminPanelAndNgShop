@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService, Product } from '@bluebits/products';
 import { Router } from '@angular/router';
 import { MessageService, ConfirmationService, ConfirmEventType  } from 'primeng/api';
-import { PaginatorModule } from 'primeng/paginator';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'admin-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: [],
 })
-export class ProductsListComponent implements OnInit {
+export class ProductsListComponent implements OnInit, OnDestroy {
 
   products: Product[] = [];  
+  //End Subscription for performance, used in onDestry
+  endsubs$: Subject<any> = new Subject();
  
   constructor(
     private productService: ProductsService,
@@ -31,9 +33,12 @@ export class ProductsListComponent implements OnInit {
   ngOnInit(): void {
     this._getProducts();
   }
+  ngOnDestroy(){
+    this.endsubs$.complete();
+  }
 
   private _getProducts(){
-    this.productService.getProducts().subscribe(products=>{
+    this.productService.getProducts().pipe(takeUntil(this.endsubs$)).subscribe(products=>{
       this.products = products;
     })
   } 

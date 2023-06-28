@@ -30,4 +30,8 @@ export class OrdersService {
     // eslint-disable-next-line @typescript-eslint/ban-types
     return this.http.delete<unknown>(`${this.apiURLorders}/${orderId}`);
   }
+
+  getTotalSales(): Observable<number> {
+    return this.http.get<number>(`${this.apiURLorders}/get/totalsales`);
+  }
 }

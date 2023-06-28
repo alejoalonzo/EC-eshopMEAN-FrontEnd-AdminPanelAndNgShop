@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrdersService, Order } from '@bluebits/orders';
 import { MessageService, ConfirmationService, ConfirmEventType  } from 'primeng/api';
 import { ORDER_STATUS } from '../order-constants';
 import { Location } from '@angular/common';
+import { Subject, takeUntil } from 'rxjs';
 
 export type OrderStatus = {
   label: string;
@@ -19,10 +20,13 @@ export type OrderStatusMap = {
   templateUrl: './orders-list.component.html',
   styleUrls: [],
 })
-export class OrdersListComponent implements OnInit {
+export class OrdersListComponent implements OnInit, OnDestroy {
 
   orders: Order[] =[];
   public orderStatus= ORDER_STATUS;
+
+  //End Subscription for performance, used in onDestry
+  endsubs$: Subject<any> = new Subject();
 
   constructor(
     private odersService: OrdersService, 
@@ -35,9 +39,12 @@ export class OrdersListComponent implements OnInit {
   ngOnInit(): void {
     this._getOrders ()
   }
+  ngOnDestroy(){
+    this.endsubs$.complete();
+  }
 
   private _getOrders (){
-    this.odersService.getOrders().subscribe((orders)=>{
+    this.odersService.getOrders().pipe(takeUntil(this.endsubs$)).subscribe((orders)=>{
       this.orders = orders;
     })
   }

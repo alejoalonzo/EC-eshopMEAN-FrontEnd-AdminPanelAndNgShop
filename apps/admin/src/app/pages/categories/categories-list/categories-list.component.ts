@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriesService, Category } from '@bluebits/products';
 import { MessageService, ConfirmationService, ConfirmEventType  } from 'primeng/api';
+import { Subject, takeUntil } from 'rxjs';
 
 
 @Component({
@@ -11,9 +12,12 @@ import { MessageService, ConfirmationService, ConfirmEventType  } from 'primeng/
   styles: [
   ]
 })
-export class CategoriesListComponent implements OnInit {
+export class CategoriesListComponent implements OnInit, OnDestroy {
 
   categories: Category[] =[]; 
+  //End Subscription for performance, used in onDestry
+  endsubs$: Subject<any> = new Subject();
+
   constructor(
     private categoriesService: CategoriesService, 
     private messageService: MessageService,
@@ -22,6 +26,9 @@ export class CategoriesListComponent implements OnInit {
 
   ngOnInit(): void {
     this._getCategories ()
+  }
+  ngOnDestroy(){
+    this.endsubs$.complete();
   }
   deleteCategory(categoryId: string){
     this.confirmationService.confirm({
@@ -54,7 +61,7 @@ export class CategoriesListComponent implements OnInit {
     this.router.navigateByUrl(`categories/form/${categoryId}`)
   }
   private _getCategories (){
-    this.categoriesService.getCategories().subscribe((cats)=>{
+    this.categoriesService.getCategories().pipe(takeUntil(this.endsubs$)).subscribe((cats)=>{
       this.categories = cats;
     })
   }
