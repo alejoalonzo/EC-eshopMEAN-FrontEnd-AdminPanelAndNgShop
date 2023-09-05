@@ -1,0 +1,26 @@
+.footer-wraper{
+    margin-top: 20px;
+    height: 70px;
+    border-radius: 15px;
+    background-color: var(--surface-200);
+    border: 1px solid var(--surface-300);
+    .copy-right{
+        display: flex;
+        height: 70px;
+        align-items: center;
+        p{
+            margin-left: 25px;
+            margin-bottom: 0;
+        }
+    }   
+    .social{
+        display: flex;
+        height: 70px;
+        align-items: center;
+        justify-content: center; 
+        .pi{
+            padding-left: 15px;
+            cursor: pointer;
+        }   
+    }
+}

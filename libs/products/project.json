@@ -1,4 +1,5 @@
 {
+  "name": "products",
   "projectType": "library",
   "sourceRoot": "libs/products/src",
   "prefix": "products",

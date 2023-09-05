@@ -1,4 +1,5 @@
 {
+  "name": "users",
   "projectType": "library",
   "sourceRoot": "libs/users/src",
   "prefix": "users",

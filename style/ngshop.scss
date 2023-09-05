@@ -15,7 +15,9 @@
 @import '~primeng/resources/themes/lara-light-blue/theme.css';
 @import '~primeng/resources/primeng.min.css';
 @import '~primeflex/primeflex.css';
+@import '~animate.css/animate.css';
 
+// configuration always after primeng library
 @import '../style/base/configuration.scss';
 
 //Pages
@@ -25,6 +27,16 @@
 //Shared
 @import './apps/shop/shared/footer.scss';
 @import './apps/shop/shared/header.scss';
+@import './apps/shop/shared/nav.scss';
 
 //Libs
 @import '../style/libs/ui/ui.scss';
+@import '../style/libs/products/products.scss';
+
+
+.container{
+    width: 1600px;
+    padding: 15px;
+    margin: 0 auto;
+    background: var(--surface-100);
+}

@@ -1,4 +1,5 @@
 {
+  "name": "orders",
   "projectType": "library",
   "sourceRoot": "libs/orders/src",
   "prefix": "orders",

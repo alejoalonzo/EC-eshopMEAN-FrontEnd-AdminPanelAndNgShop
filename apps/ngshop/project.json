@@ -1,4 +1,5 @@
 {
+  "name": "ngshop",
   "projectType": "application",
   "sourceRoot": "apps/ngshop/src",
   "prefix": "bluebits",

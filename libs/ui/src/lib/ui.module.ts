@@ -1,20 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Route } from '@angular/router';
-import { BannerComponent } from './banner/banner.component';
-import { SliderComponent } from './slider/slider.component';
-
-export const uiRoutes: Route[] = [];
+import { BannerComponent } from './Components/banner/banner.component';
+import { ButtonModule } from 'primeng/button'
 
 @NgModule({
-  imports: [CommonModule, RouterModule],
-  declarations: [
-    BannerComponent,
-    SliderComponent
-  ],
-  exports: [
-    BannerComponent,
-    SliderComponent
-  ],
+  imports: [CommonModule, ButtonModule],
+  declarations: [BannerComponent],
+  exports: [BannerComponent],
 })
 export class UiModule {}

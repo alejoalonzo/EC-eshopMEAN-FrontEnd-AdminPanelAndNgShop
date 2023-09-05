@@ -75,11 +75,11 @@ const routes: Routes = [
       },
     ],
   },
-  {//redirrection for every url if is not above
-    path:'**',
-    redirectTo: '',
-    pathMatch: 'full'
-  }
+  // {//redirrection for every url if is not above
+  //   path:'**',
+  //   redirectTo: '',
+  //   pathMatch: 'full'
+  // }
 ];
 
 @NgModule({

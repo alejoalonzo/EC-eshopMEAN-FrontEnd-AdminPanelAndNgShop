@@ -1,0 +1,8 @@
+<div class="product-item" *ngIf="product">
+    <div class="product-item-wraper">
+        <img [src]="product.image" class="image" alt="">
+        <h4 class="naem">{{ product.name }}</h4>
+        <h5 class="price">{{ product.price | currency }}</h5>
+        <p-button label="Add to cart" icon="pi pi-shopping-cart banner-button" iconPos="right"></p-button>
+    </div>
+</div>

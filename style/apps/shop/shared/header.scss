@@ -1,0 +1,21 @@
+header{
+    .logo{
+        img{
+            width: 50px;
+            margin-left: 25px;
+        }
+    }
+    .search, .ngshop-nav{
+        display: flex;
+        height: 70px;
+        align-items: center; 
+    }
+    .tools{
+        display: flex;
+        height: 70px;
+        align-items: center; 
+        .pi{
+            padding-left: 15px;
+        }   
+    }
+}

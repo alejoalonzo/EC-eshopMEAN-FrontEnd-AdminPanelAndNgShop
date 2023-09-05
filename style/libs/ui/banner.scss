@@ -1,0 +1,45 @@
+.banner{
+    height: 280px;
+    width: 100%;
+    background-color: #d7effb;
+    border-radius: 25px;
+    margin-top: 30px;
+
+    &-text{
+        font-family: 'Lobster', cursive;
+        padding-left: 25px;
+        color: var(--surface-700);
+        margin-top: 50px;
+        h1{
+            font-size: 4.6em;
+            line-height: 50px;
+        }
+        h2{
+            line-height: 30px;
+            margin-left: 116px;
+            font-size: 3.4em;
+        }
+    }
+    &-img{
+        text-align: right;
+        padding-right: 50px;
+        img {
+            width: 38%; 
+        }
+    } 
+
+    .p-button{
+        background-color: var(--surface-0);
+        color: $primary;
+        border: 0;
+        border-radius: 13px;
+        margin-top: 60px;
+        &:enabled:hover{
+            background-color: var(--surface-0);
+            color: $primaryDark;
+            border: 0;
+            border-radius: 13px;
+            margin-top: 60px;
+        }
+    }
+}
