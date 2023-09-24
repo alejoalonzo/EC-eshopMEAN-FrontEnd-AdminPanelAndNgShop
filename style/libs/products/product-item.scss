@@ -9,13 +9,15 @@
         justify-content: center;
         flex-direction: column;
         min-height: 250px;
-        margin-top: 85px;
+        margin-top: 85px; 
+        cursor: pointer;
     }
     .image{
         width: 60%;
         height: 150px;
         margin-top: -85px;
         margin-bottom: 10px;
+       
     }
 
     .name{

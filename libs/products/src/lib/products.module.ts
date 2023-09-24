@@ -7,22 +7,29 @@ import { FeaturedProductsComponent } from './Components/featured-products/featur
 import { ProductItemComponent } from './Components/product-item/product-item.component';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
+import { RatingModule } from 'primeng/rating';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { ProductsListComponent } from './Components/pages/products-list/products-list.component';
 import { FormsModule } from '@angular/forms';
+import { ProductPageComponent } from './Components/pages/product-page/product-page.component';
+import { UiModule } from '@bluebits/ui';
 
 export const productsRoutes: Route[] = [
   { path: 'products', component: ProductsListComponent },
-  { path: 'category/:categoryid', component: ProductsListComponent }
+  { path: 'category/:categoryid', component: ProductsListComponent },
+  { path: 'products/:productid', component: ProductPageComponent },
 ];
-
 
 @NgModule({
   imports: [
-    CommonModule, 
-    RouterModule.forChild(productsRoutes), 
-    ButtonModule, 
+    CommonModule,
+    RouterModule.forChild(productsRoutes),
+    ButtonModule,
     CheckboxModule,
-    FormsModule
+    FormsModule,
+    RatingModule,
+    InputNumberModule,
+    UiModule,
   ],
   declarations: [
     ProductsSearchComponent,
@@ -30,13 +37,14 @@ export const productsRoutes: Route[] = [
     FeaturedProductsComponent,
     ProductItemComponent,
     ProductsListComponent,
+    ProductPageComponent,
   ],
   exports: [
     ProductsSearchComponent,
     CategoriesBannerComponent,
     FeaturedProductsComponent,
     ProductItemComponent,
-    ProductsListComponent
+    ProductsListComponent,
   ],
 })
 export class ProductsModule {}
