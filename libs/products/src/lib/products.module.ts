@@ -13,6 +13,8 @@ import { ProductsListComponent } from './Components/pages/products-list/products
 import { FormsModule } from '@angular/forms';
 import { ProductPageComponent } from './Components/pages/product-page/product-page.component';
 import { UiModule } from '@bluebits/ui';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 export const productsRoutes: Route[] = [
   { path: 'products', component: ProductsListComponent },
@@ -30,6 +32,7 @@ export const productsRoutes: Route[] = [
     RatingModule,
     InputNumberModule,
     UiModule,
+    ToastModule,
   ],
   declarations: [
     ProductsSearchComponent,
@@ -39,6 +42,7 @@ export const productsRoutes: Route[] = [
     ProductsListComponent,
     ProductPageComponent,
   ],
+
   exports: [
     ProductsSearchComponent,
     CategoriesBannerComponent,
@@ -46,5 +50,6 @@ export const productsRoutes: Route[] = [
     ProductItemComponent,
     ProductsListComponent,
   ],
+  providers: [MessageService],
 })
 export class ProductsModule {}

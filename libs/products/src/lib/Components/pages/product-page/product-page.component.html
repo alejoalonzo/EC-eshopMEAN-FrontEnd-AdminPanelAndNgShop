@@ -18,7 +18,7 @@
                 <div class="field col-12 md-3">
                     <label for="quantity">Quantity</label>
                     <div>
-                        <p-inputNumber [(ngModel)]="quantity" [showButtons]="true" inputId="minmax-buttons" [min]="0"
+                        <p-inputNumber [(ngModel)]="quantity" [showButtons]="true" inputId="minmax-buttons" [min]="1"
                             [max]="100"> </p-inputNumber>
                     </div>
                 </div>
@@ -26,8 +26,9 @@
             <div class="product-actions">
                 <button pButton pRipple type="button" class="p-button-rounded mr-2" label="Buy Now">
                 </button>
+                <p-toast></p-toast>
                 <button pButton pRipple type="button" class="p-button-rounded mr-2" label="Add to Cart"
-                    (onClick)="addProductToCart();">
+                    (click)="addProductToCart()">
                 </button>
             </div>
         </div>

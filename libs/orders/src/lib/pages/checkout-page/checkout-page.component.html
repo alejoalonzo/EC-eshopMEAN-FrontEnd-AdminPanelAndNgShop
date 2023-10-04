@@ -1,0 +1,81 @@
+<div class="checkout-page">
+    <div class="mt-6">
+        <p-button label="Back to Cart" icon="pi pi-arrow-left" (onClick)="backToCartPage();"></p-button>
+    </div>
+    <div class="grid checkout-form mt-4">
+        <div class="col-8 md:col-6 lg:col-3 checkout-form-containerData">
+            <form [formGroup]="checkoutForm">
+                <div class="formgrid grid">
+                    <div class="field col">
+                        <label for="name">Name</label>
+                        <input formControlName="name" id="name" type="text"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                        <small *ngIf="checkoutForm.controls['name'].invalid && isSubmitted" class="p-error">Name is
+                            required</small>
+                    </div>
+                    <div class="field col">
+                        <label for="email">E-mail</label>
+                        <input formControlName="email" id="email" type="text"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                        <small *ngIf="checkoutForm.controls['email'].invalid && isSubmitted" class="p-error">
+                            <span *ngIf="checkoutForm.controls['email'].errors?.['required']">Email is required</span>
+                            <span *ngIf="checkoutForm.controls['email'].errors?.['email']">Email is invalid</span>
+                        </small>
+                    </div>
+                </div>
+                <div class="formgrid grid">
+                    <div class="field col">
+                        <label for="street">Street</label>
+                        <input formControlName="street" id="street" type="text"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                        <small *ngIf="checkoutForm.controls['street'].invalid && isSubmitted" class="p-error">Street is
+                            required</small>
+                    </div>
+                    <div class="field col">
+                        <label for="number">Apartment</label>
+                        <input formControlName="number" id="number" type="text"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                        <small *ngIf="checkoutForm.controls['number'].invalid && isSubmitted" class="p-error">Number is
+                            required</small>
+                    </div>
+                    <div class="field col">
+                        <label for="zip">Zip</label>
+                        <input formControlName="zip" id="zip" type="text"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                        <small *ngIf="checkoutForm.controls['zip'].invalid && isSubmitted" class="p-error">Zip Code is
+                            required</small>
+                    </div>
+                </div>
+                <div class="formgrid grid">
+                    <div class="field col">
+                        <label for="city">City</label>
+                        <input formControlName="city" id="city" type="text"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                        <small *ngIf="checkoutForm.controls['city'].invalid && isSubmitted" class="p-error">City is
+                            required</small>
+                    </div>
+                    <div class="field col">
+                        <label for="country">Country</label><br>
+                        <p-dropdown formControlName="country" [options]="countries" optionLabel="name"
+                            optionValue="name" [filter]="true" class="p-dropdown-grid">
+                        </p-dropdown>
+                        <small *ngIf="checkoutForm.controls['country'].invalid && isSubmitted" class="p-error">Pick a
+                            Country
+                        </small>
+                    </div>
+                    <div class="field col">
+                        <label for="phone">Phone</label><br>
+                        <p-inputMask mask="999 999-9999" placeholder="(999) 999-9999" formControlName="phone"
+                            id="phone"></p-inputMask><br>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-4">
+            <orders-order-summary></orders-order-summary>
+            <div class="mt-2">
+                <p-button label="Place an Order" (onClick)="placeOrder();"></p-button>
+            </div>
+        </div>
+    </div>
+</div>

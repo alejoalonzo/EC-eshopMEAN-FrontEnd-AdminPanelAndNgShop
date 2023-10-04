@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@bluebits/ui';
+import { OrdersModule } from '@bluebits/orders';
 import { ProductsModule } from '@bluebits/products';
 import { AccordionModule } from 'primeng/accordion';
 import { NavComponent } from './shared/nav/nav.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
     ProductsModule,
     UiModule,
     AccordionModule,
+    OrdersModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

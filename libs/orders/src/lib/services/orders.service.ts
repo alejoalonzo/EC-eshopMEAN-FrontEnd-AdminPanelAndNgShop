@@ -9,6 +9,7 @@ import { environment } from '@env/environment';
 })
 export class OrdersService {
   apiURLorders = environment.apiURL+'orders';
+  apiURLproducts = environment.apiURL+'products';
   public url!: string;
 
   constructor(private http:HttpClient) { }
@@ -16,9 +17,9 @@ export class OrdersService {
   getOrders(): Observable<Order[]>{
     return this.http.get<Order[]>(this.apiURLorders);
   }
-  // createProduct(productData: FormData): Observable<Product>{
-  //   return this.http.post<Product>(this.apiURLproducts, productData);
-  // }
+  createOrder(order: Order): Observable<Order>{
+    return this.http.post<Order>(this.apiURLorders, order);
+  }
   getOrder(orderId: string): Observable<Order>{
     return this.http.get<Order>(`${this.apiURLorders}/${orderId}`);
   }
@@ -33,5 +34,9 @@ export class OrdersService {
 
   getTotalSales(): Observable<number> {
     return this.http.get<number>(`${this.apiURLorders}/get/totalsales`);
+  }
+
+  getProduct(productId: string): Observable<any>{
+    return this.http.get<any>(`${this.apiURLproducts}/${productId}`);
   }
 }

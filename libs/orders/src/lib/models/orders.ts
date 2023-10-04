@@ -10,9 +10,9 @@ export class Order{
     city?: string;
     zip?: string;
     phone?: string;
-    status?: string;
+    status?: any;
     totalPrice?: number;
-    user?: User;
+    user?: any;
     dateOrdered?: string;
     _id?: string;
 }

@@ -33,4 +33,5 @@ export class UsersService {
   deleteUser(userId: string): Observable<unknown>{
     return this.http.delete<unknown>(`${this.apiURLusers}/${userId}`);
   }
+  
 }

@@ -1,0 +1,41 @@
+.cart-page{
+    margin-top: 50px;
+    min-height: 500px;
+
+    .cart{
+        &-shippingInfo{
+            color: var(--green-700);
+            padding-bottom: 15px;
+        }
+
+        &-item{
+            background-color: var(--surface-0);
+            border: 1px solid var(--surface-300);
+            padding: 15;
+            border-radius: 15px;
+            &-image{
+                height: 120px;
+                max-width: 100%;
+                img{
+                    max-height:120px;
+                }
+            }
+            &-name{
+                font-weight: 600;
+                font-size: 1.2em;
+
+            }
+            &-price{
+                font-weight: 600;
+                font-size: 1.2em;
+                color: $primary;
+            }
+            &-remove{
+            }
+            &-quantity{
+                padding: 20px 10px 0 0;
+            }
+        }
+
+    }
+}
