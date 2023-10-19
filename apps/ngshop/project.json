@@ -1,5 +1,6 @@
 {
   "name": "ngshop",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/ngshop/src",
   "prefix": "bluebits",
@@ -70,14 +71,14 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": ["apps/ngshop/**/*.ts", "apps/ngshop/**/*.html"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/ngshop"],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/ngshop"],
       "options": {
         "jestConfig": "apps/ngshop/jest.config.ts",
         "passWithNoTests": true

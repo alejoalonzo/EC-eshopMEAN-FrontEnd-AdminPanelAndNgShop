@@ -16,6 +16,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
 import { ThankYouComponent } from './pages/thank-you/thank-you.component';
+import { AuthGardService } from '@bluebits/users';
 
 const routes: Routes = [
   {
@@ -24,12 +25,15 @@ const routes: Routes = [
   },
   {
     path: 'checkout',
+    canActivate: [AuthGardService],
     component: CheckoutPageComponent,
+
   },
   {
     path: 'success',
     component: ThankYouComponent,
   },
+  
 ];
 
 export const ordersRoutes: Route[] = [];

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from '@bluebits/users';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrderItem } from '../../models/order-item';
@@ -9,6 +9,7 @@ import { CartService } from '../../services/cart.service';
 import { Cart } from '../../models/cart';
 import { OrdersService } from '../../services/orders.service';
 import { ORDER_STATUS_FRONT } from '../../constOrders';
+import { Subject, takeUntil } from 'rxjs';
 
 declare const require: (arg0: string) => countriesLib.LocaleData;
 
@@ -17,16 +18,20 @@ declare const require: (arg0: string) => countriesLib.LocaleData;
   templateUrl: './checkout-page.component.html',
   styleUrls: [],
 })
-export class CheckoutPageComponent implements OnInit {
+export class CheckoutPageComponent implements OnInit, OnDestroy {
 
   checkoutForm!: FormGroup;
   isSubmitted!: boolean;
   countries: { id: string; name: string; }[] = [];
   currentUserId = '62f56d5846a0aa0b207f4ec7';
+  endSubs$: Subject<any>= new Subject();
+  // currentUserId? : string;
   orderItems : OrderItem[]=[]
+  endSuscribes$: Subject<any>= new Subject()
 
   constructor(
     private router: Router,
+    // private route: ActivatedRoute,
     private usersService: UsersService,
     private formBuilder: FormBuilder,
     private cartService: CartService,
@@ -35,8 +40,15 @@ export class CheckoutPageComponent implements OnInit {
 
   ngOnInit(): void {
     this._initFormCheckout();
+    this._autofillUserData();
     this._getCartItems();
     this._getCountries();
+    // this._autofillUserDataFromServise(id);
+  }
+
+  ngOnDestroy() {
+    // this.endSubs$.next();
+    this.endSuscribes$.complete();
   }
 
   backToCartPage(){
@@ -66,8 +78,6 @@ export class CheckoutPageComponent implements OnInit {
       this.cartService.emptyCart();
       this.router.navigate(['/success'])
       
-    },()=>{
-      // display error message to the client
     })
   }
 
@@ -83,6 +93,27 @@ export class CheckoutPageComponent implements OnInit {
       country:['', Validators.required],
     })
   }
+
+  //HAVE TO CHECK WHATS GOING ON WITH NGRX
+
+  private _autofillUserData() {
+    this.usersService.observCurrentUser().subscribe((user) => {
+      if (user) {
+        this.checkoutForm.controls['name'].setValue(user.name);
+      } else {
+        console.error('User or user.name is undefined:', user);
+      }
+    });
+  }
+
+  // private _autofillUserDataFromServise(id: string) {
+  //   this.usersService.getUser(id).pipe(takeUntil(this.endSubs$)).subscribe((user) => {
+  //     this.currentUserId = user._id;
+  //     this.checkoutForm.controls['name'].setValue(user.name);
+  //     console.log(user._id);
+  //   });
+  // }
+  
 
   private _getCountries(){
     countriesLib.registerLocale(require("i18n-iso-countries/langs/en.json"));

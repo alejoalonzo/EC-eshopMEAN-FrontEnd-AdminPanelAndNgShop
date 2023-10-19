@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
 import { User } from '../models/user';
 import { environment } from '@env/environment';
+import { UsersFacade } from '../state/users.facade';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class UsersService {
   apiURLusers = environment.apiURL+'users';
   public url!: string;
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient, private usersFacade: UsersFacade) {
    }
 
    
@@ -33,5 +34,16 @@ export class UsersService {
   deleteUser(userId: string): Observable<unknown>{
     return this.http.delete<unknown>(`${this.apiURLusers}/${userId}`);
   }
+
+  initappStore(){
+    this.usersFacade.buildUserSession
+  }
   
+  observCurrentUser(){
+    return this.usersFacade.currentUser$
+  }
+
+  isCurrentAunth(){
+    return this.usersFacade.isAuthtenticated$
+  }
 }

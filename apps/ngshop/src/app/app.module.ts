@@ -12,6 +12,12 @@ import { OrdersModule } from '@bluebits/orders';
 import { ProductsModule } from '@bluebits/products';
 import { AccordionModule } from 'primeng/accordion';
 import { NavComponent } from './shared/nav/nav.component';
+import { UsersModule } from '@bluebits/users';
+import { StoreModule,  } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { MessageService } from 'primeng/api';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from '@bluebits/users';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,12 +36,17 @@ const routes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     ProductsModule,
     UiModule,
     AccordionModule,
     OrdersModule,
+    UsersModule,
   ],
-  providers: [],
+  providers: [MessageService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true }//Token to authorize (Bearer)
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
