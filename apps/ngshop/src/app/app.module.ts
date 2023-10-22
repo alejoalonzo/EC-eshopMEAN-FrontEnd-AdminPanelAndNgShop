@@ -18,6 +18,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { MessageService } from 'primeng/api';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from '@bluebits/users';
+import { NgxStripeModule } from 'ngx-stripe';
+import { stripeApiKeyFront } from './../../../../enviorenments/apikey';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -43,6 +46,7 @@ const routes: Routes = [
     AccordionModule,
     OrdersModule,
     UsersModule,
+    NgxStripeModule.forRoot(stripeApiKeyFront.apiKeyStripepublic)
   ],
   providers: [MessageService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true }//Token to authorize (Bearer)

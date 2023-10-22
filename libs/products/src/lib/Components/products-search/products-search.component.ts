@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'products-search',
   templateUrl: './products-search.component.html',
   styleUrls: [],
 })
-export class ProductsSearchComponent implements OnInit {
-  constructor() {}
+export class ProductsSearchComponent {
 
-  ngOnInit(): void {}
 }

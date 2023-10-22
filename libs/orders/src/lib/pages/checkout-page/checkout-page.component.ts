@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { UsersService } from '@bluebits/users';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrderItem } from '../../models/order-item';
@@ -8,8 +8,8 @@ import * as countriesLib from 'i18n-iso-countries';
 import { CartService } from '../../services/cart.service';
 import { Cart } from '../../models/cart';
 import { OrdersService } from '../../services/orders.service';
-import { ORDER_STATUS_FRONT } from '../../constOrders';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
+
 
 declare const require: (arg0: string) => countriesLib.LocaleData;
 
@@ -60,7 +60,7 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
     if(this.checkoutForm.invalid){
       return;
     }
-
+    
     const order: Order = {
       orderItems: this.orderItems,
       shippingAddress1: this.checkoutForm.controls['street'].value, 
@@ -72,24 +72,26 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
       user: this.currentUserId,
       dateOrdered: `${Date.now()}`,
     };
-    
-    this.ordersService.createOrder(order).subscribe(()=>{
-      //redirec to the Thank you page
-      this.cartService.emptyCart();
-      this.router.navigate(['/success'])
-      
+
+    this.ordersService.cacheOrderData(order)
+
+    this.ordersService.createCheckoutSession(this.orderItems).subscribe(error=>{
+      if(error){
+        console.log('error in Checkout Session Payment')
+      }
     })
+    
   }
 
   private _initFormCheckout(){
     this.checkoutForm = this.formBuilder.group({
-      name:['', Validators.required],
-      email:['', [Validators.required, Validators.email]],
+      name:['Alejandro Alonzo Galdamez', Validators.required],
+      email:['alejo12@gmail.com', [Validators.required, Validators.email]],
       phone:[''],
-      street:['', Validators.required],
-      number:['', Validators.required],
-      zip:['', Validators.required],
-      city:['', Validators.required],
+      street:['Calle 8 de Marzo', Validators.required],
+      number:['74', Validators.required],
+      zip:['08950', Validators.required],
+      city:['Barcelona', Validators.required],
       country:['', Validators.required],
     })
   }
@@ -97,13 +99,14 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
   //HAVE TO CHECK WHATS GOING ON WITH NGRX
 
   private _autofillUserData() {
+    /*
     this.usersService.observCurrentUser().subscribe((user) => {
       if (user) {
         this.checkoutForm.controls['name'].setValue(user.name);
       } else {
         console.error('User or user.name is undefined:', user);
       }
-    });
+    });*/
   }
 
   // private _autofillUserDataFromServise(id: string) {

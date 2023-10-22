@@ -30,9 +30,11 @@
         .p-button{
             background-color: $primary;
             border: 0;
+            border-radius: 0 ;
         }
         .p-button:hover{
             background-color: $secondary;
+            border-radius: 0;
         }
     }
     &-actions{

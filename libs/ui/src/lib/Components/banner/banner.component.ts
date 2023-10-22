@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ui-banner',
   templateUrl: './banner.component.html',
   styleUrls: [],
 })
-export class BannerComponent implements OnInit {
-  constructor() {}
+export class BannerComponent {
+  constructor(private router: Router, ) {}
 
-  ngOnInit(): void {}
+  goToProductsPage(){
+    this.router.navigate(['/products'])
+  }
 }

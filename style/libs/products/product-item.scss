@@ -28,15 +28,5 @@
         font-size: 1.2em;
         margin: 5px;
     }
-    .p-button{
-        background-color: $primary;
-        border: 0;
-        border-radius: 15px;
-        :hover{
-            background-color: $primaryDark;
-        }
-    }
-    .p-button:hover{
-        background-color: $primaryDark;
-    }
+
 }

@@ -34,6 +34,12 @@
             }
             &-quantity{
                 padding: 20px 10px 0 0;
+                
+                .p-inputnumber-button-group{
+                    button{
+                        border-radius: 0;
+                    }
+                }
             }
         }
 

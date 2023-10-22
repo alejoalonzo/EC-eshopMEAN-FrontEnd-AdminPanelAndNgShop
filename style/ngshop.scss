@@ -33,6 +33,7 @@
 @import '../style/libs/ui/ui.scss';
 @import '../style/libs/products/products.scss';
 @import '../style/libs/orders/orders.scss';
+@import '../style/libs/users/login-register.scss';
 
 
 .container{
@@ -40,4 +41,13 @@
     padding: 15px;
     margin: 0 auto;
     background: var(--surface-100);
+}
+
+.p-button{
+    background-color: $primary;
+    border: 0;
+    border-radius: 15px;
+}
+.p-button:hover{
+    background-color: $primaryDark;
 }

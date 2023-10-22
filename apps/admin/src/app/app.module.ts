@@ -43,6 +43,8 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { AppRoutingModuleModule } from './app-routes.modules';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { NgxStripeModule } from 'ngx-stripe';
+import { stripeApiKeyFront } from './../../../../enviorenments/apikey';
 
 const UX_MODULE = [
   CardModule,
@@ -91,6 +93,7 @@ const UX_MODULE = [
     ReactiveFormsModule,
     AppRoutingModuleModule,
     UsersModule,
+    NgxStripeModule.forRoot(stripeApiKeyFront.apiKeyStripepublic),
     ...UX_MODULE,
   ],
   providers: [

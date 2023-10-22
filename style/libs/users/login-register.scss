@@ -1,5 +1,6 @@
 .login-register{
     height: 100vh;
+    border-radius: 15px;
     background: linear-gradient(45deg, #222831 0%, #393E46 100%);
 
     &-panel{
@@ -16,3 +17,18 @@
         border-radius: 3% 0 0 3%; 
     }
 }   
+
+// laptop
+
+@media (max-width: 1550px) {
+
+    .login-register{
+        height: 100vh;
+        border-radius: 15px;
+        &-panel{
+            position: absolute;
+            left: calc(50% - 325px);
+            top: calc(50% - 200px);
+        }
+    }   
+}
