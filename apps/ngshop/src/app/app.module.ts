@@ -19,7 +19,7 @@ import { MessageService } from 'primeng/api';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from '@bluebits/users';
 import { NgxStripeModule } from 'ngx-stripe';
-import { stripeApiKeyFront } from './../../../../enviorenments/apikey';
+import { stripeApiKeyFront } from '@env/apikey';
 
 
 const routes: Routes = [

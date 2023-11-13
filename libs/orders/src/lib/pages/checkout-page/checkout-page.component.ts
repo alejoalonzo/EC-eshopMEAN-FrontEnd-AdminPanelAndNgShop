@@ -85,13 +85,13 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
 
   private _initFormCheckout(){
     this.checkoutForm = this.formBuilder.group({
-      name:['Alejandro Alonzo Galdamez', Validators.required],
-      email:['alejo12@gmail.com', [Validators.required, Validators.email]],
+      name:['', Validators.required],
+      email:['', [Validators.required, Validators.email]],
       phone:[''],
-      street:['Calle 8 de Marzo', Validators.required],
-      number:['74', Validators.required],
-      zip:['08950', Validators.required],
-      city:['Barcelona', Validators.required],
+      street:['', Validators.required],
+      number:['', Validators.required],
+      zip:['', Validators.required],
+      city:['', Validators.required],
       country:['', Validators.required],
     })
   }

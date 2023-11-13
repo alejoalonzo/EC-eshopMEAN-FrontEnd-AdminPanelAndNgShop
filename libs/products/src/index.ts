@@ -3,3 +3,8 @@ export * from './lib/services/categories.service';
 export * from './lib/services/products.service';
 export * from './lib/models/category';
 export * from './lib/models/product';
+export * from './lib/Components/categories-banner/categories-banner.component';
+export * from './lib/Components/products-search/products-search.component';
+export * from './lib/Components/featured-products/featured-products.component';
+export * from './lib/Components/product-item/product-item.component';
+export * from './lib/Components/pages/products-list/products-list.component';

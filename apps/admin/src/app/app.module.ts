@@ -44,7 +44,7 @@ import { AppRoutingModuleModule } from './app-routes.modules';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { NgxStripeModule } from 'ngx-stripe';
-import { stripeApiKeyFront } from './../../../../enviorenments/apikey';
+import { stripeApiKeyFront } from '@env/apikey';
 
 const UX_MODULE = [
   CardModule,

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
 import { User } from '../models/user';
-import { environment } from '@env/environment';
+// import { environment } from '@env/environment';
+import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { LocalStorageServiceService } from './local-storage-service.service';
 

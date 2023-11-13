@@ -5,3 +5,5 @@ export * from './lib/models/order-item';
 export * from './lib/services/orders.service';
 export * from './lib/services/cart.service';
 export * from './lib/constOrders';
+export * from './lib/components/cart-icon/cart-icon.component'; 
+export * from './lib/pages/cart-page/cart-page.component'; 

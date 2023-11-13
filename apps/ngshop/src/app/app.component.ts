@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UsersService } from '@bluebits/users';
 
 @Component({
   selector: 'ngshop-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
 
   constructor(private usersService: UsersService){}
 
   title = 'ngshop';
   
-  ngOnInit(): void {
-      this.usersService.initappStore()
-  }
+  // ngOnInit(): void {
+  //     this.usersService.initappStore()
+  // }
 }
