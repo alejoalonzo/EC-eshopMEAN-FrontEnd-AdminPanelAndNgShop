@@ -4,7 +4,8 @@
 
 export const environment = {
     production: false,
-    apiURL: "http://127.0.0.1:3000/api/v1/"
+    // apiURL: "http://127.0.0.1:3000/api/v1/"
+    apiURL: "https://ec-eshopmean-backend.onrender.com/api/v1/"
   };
   
   /*
